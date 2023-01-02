@@ -30,3 +30,11 @@ Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'
 Route::get('/AddProduct',function () {
     return view('addProduct');
 });
+
+Route::get('/UpdateProduct',function () {
+    return view('updateProduct');
+});
+
+Route::get('/Profile',function () {
+    return view('profile');
+});
