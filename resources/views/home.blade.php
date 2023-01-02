@@ -13,8 +13,8 @@
 
 <div class="container">
             <div class="card">
-                <div class="card-header">{{ __('Beauty') }} <a class="btn btn-link" href="{{ route('register') }}">{{ __('View All') }}</a></div>
-                <div class="card-deck">
+                <div class="card-header">{{ __('Beauty') }} <a class="btn btn-link" href="category">{{ __('View All') }}</a></div>
+                <div class="card-deck mt-3 ml-1 mr-1 mb-3">
                   <div class="card">
                     <img class="card-img-top" src="https://lzd-img-global.slatic.net/g/p/b32c1a949d736d2574ddcb915e386038.jpg_720x720q80.jpg_.webp" alt="Card image cap">
                     <div class="card-body">
@@ -58,8 +58,8 @@
 
 <div class="container">
             <div class="card">
-                <div class="card-header">{{ __('Camera') }} <a class="btn btn-link" href="{{ route('register') }}">{{ __('View All') }}</a></div>
-                <div class="card-deck">
+                <div class="card-header">{{ __('Camera') }} <a class="btn btn-link" href="category">{{ __('View All') }}</a></div>
+                <div class="card-deck mt-3 ml-1 mr-1 mb-3">
                   <div class="card">
                     <img class="card-img-top" src="https://lzd-img-global.slatic.net/g/p/5de704d1503dc3a4c446bc0d5e048470.jpg_720x720q80.jpg_.webp" alt="Card image cap">
                     <div class="card-body">
