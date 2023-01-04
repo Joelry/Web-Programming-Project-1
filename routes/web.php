@@ -31,6 +31,8 @@ Route::get('/profile',function () {
 
 Route::get('/category/{id}', [CategoryController::class, 'products'])->name('category.products');
 
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
+
 Route::get('/products/manage', [ProductController::class, 'index'])->name('products.manage');
 Route::get('/products/new', [ProductController::class, 'create'])->name('products.new');
 Route::post('/products/new', [ProductController::class, 'store'])->name('products.store');

@@ -18,7 +18,7 @@
 
             <div class="card-deck mt-3 ml-1 mr-1 mb-3" style="overflow-x: auto">
                 @foreach(\App\Models\Product::where('category', $category->slug)->get() as $product)
-                    @include('product')
+                    @include('product_entry')
                 @endforeach
             </div>
         </div>

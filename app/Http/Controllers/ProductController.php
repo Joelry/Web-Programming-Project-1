@@ -20,7 +20,7 @@ class ProductController extends Controller
         $product = null;
         $message = null;
 
-        return view('products_index', compact('product', 'message'));
+        return view('product_list', compact('product', 'message'));
     }
 
     /**
@@ -30,9 +30,11 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $product = new Product;
+        $product->stock = 1;
         $editMode = false;
 
-        return view('products_edit', compact('editMode'));
+        return view('product_edit', compact('product', 'editMode'));
     }
 
     /**
@@ -43,7 +45,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO validation
+        self::validate_product($request);
 
         $image = $request->file('image');
         Storage::putFileAs('public', $image, $image->getClientOriginalName());
@@ -52,12 +54,13 @@ class ProductController extends Controller
             'category' => $request->category,
             'description' => $request->description,
             'price' => $request->price,
+            'stock' => $request->stock,
             'image' => $image->getClientOriginalName(),
         ]);
 
         $message = __('Successfully created :name.', ['name' => $product->name]);
 
-        return view('products_index', compact('product', 'message'));
+        return view('product_list', compact('product', 'message'));
     }
 
     /**
@@ -84,7 +87,7 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         $editMode = true;
 
-        return view('products_edit', compact('product', 'editMode'));
+        return view('product_edit', compact('product', 'editMode'));
     }
 
     /**
@@ -96,7 +99,7 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        // TODO validation
+        self::validate_product($request);
 
         $product = Product::find($request->id);
 
@@ -104,6 +107,7 @@ class ProductController extends Controller
         $product->category = $request->category;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->stock = $request->stock;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             Storage::putFileAs('public', $image, $image->getClientOriginalName());
@@ -114,7 +118,7 @@ class ProductController extends Controller
 
         $message = __('Successfully updated :name.', ['name' => $product->name]);
 
-        return view('products_index', compact('product', 'message'));
+        return view('product_list', compact('product', 'message'));
     }
 
     /**
@@ -128,6 +132,17 @@ class ProductController extends Controller
         $product = Product::where('id', $request->id)->delete();
         $message = __('Successfully deleted :name.', ['name' => $product->name]);
 
-        return view('products_index', compact('product', 'message'));
+        return view('product_list', compact('product', 'message'));
+    }
+
+    private static function validate_product(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:20|max:70',
+            'category' => 'required',
+            'description' => 'required|max:2000',
+            'price' => 'required|numeric|min:100.0|max:100000000.0',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
     }
 }
