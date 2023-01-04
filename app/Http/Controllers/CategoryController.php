@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-      /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function products(Request $request)
     {
-        return view('category');
+        $category = Category::find($request->id);
+        $products = Product::where('category', $request->id)->get();
+
+        return view('category_products', compact('category', 'products'));
     }
 }

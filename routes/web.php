@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,28 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('category');
-
-Route::get('/AddProduct',function () {
-    return view('addProduct');
-});
-
-Route::get('/UpdateProduct',function () {
-    return view('updateProduct');
-});
-
-Route::get('/Profile',function () {
+Route::get('/profile',function () {
     return view('profile');
 });
+
+Route::get('/category/{id}', [CategoryController::class, 'products'])->name('category.products');
+
+Route::get('/products/manage', [ProductController::class, 'index'])->name('products.manage');
+Route::get('/products/new', [ProductController::class, 'create'])->name('products.new');
+Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
