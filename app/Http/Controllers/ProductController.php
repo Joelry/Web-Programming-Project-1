@@ -17,9 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $product = null;
+        $message = null;
 
-        return view('products_index', compact('products'));
+        return view('products_index', compact('product', 'message'));
     }
 
     /**
@@ -29,7 +30,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products_edit');
+        $editMode = false;
+
+        return view('products_edit', compact('editMode'));
     }
 
     /**
@@ -52,7 +55,9 @@ class ProductController extends Controller
             'image' => $image->getClientOriginalName(),
         ]);
 
-        return redirect()->route('products.manage', ['created_product' => $product]);
+        $message = __('Successfully created :name.', ['name' => $product->name]);
+
+        return view('products_index', compact('product', 'message'));
     }
 
     /**
@@ -77,8 +82,9 @@ class ProductController extends Controller
     public function edit(Request $request)
     {
         $product = Product::find($request->id);
+        $editMode = true;
 
-        return view('products_edit', compact('product'));
+        return view('products_edit', compact('product', 'editMode'));
     }
 
     /**
@@ -106,7 +112,9 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.manage', ['saved_product' => $product]);
+        $message = __('Successfully updated :name.', ['name' => $product->name]);
+
+        return view('products_index', compact('product', 'message'));
     }
 
     /**
@@ -117,8 +125,9 @@ class ProductController extends Controller
      */
     public function destroy(Request $request)
     {
-        $product = Product::where('id', $request->id)->destroy();
+        $product = Product::where('id', $request->id)->delete();
+        $message = __('Successfully deleted :name.', ['name' => $product->name]);
 
-        return redirect()->route('products.manage', ['deleted_product' => $product]);
+        return view('products_index', compact('product', 'message'));
     }
 }

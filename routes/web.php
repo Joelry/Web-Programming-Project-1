@@ -33,4 +33,7 @@ Route::get('/category/{id}', [CategoryController::class, 'products'])->name('cat
 
 Route::get('/products/manage', [ProductController::class, 'index'])->name('products.manage');
 Route::get('/products/new', [ProductController::class, 'create'])->name('products.new');
+Route::post('/products/new', [ProductController::class, 'store'])->name('products.store');
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
+Route::post('/products/edit/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::get('/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.delete');

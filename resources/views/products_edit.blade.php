@@ -8,15 +8,20 @@
                 <div class="card-header text-center">Edit Product</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" enctype="multipart/form-data"
+                            @if($editMode)
+                                action="{{ route('products.update', $product->id) }}"
+                            @else
+                                action="{{ route('products.store') }}"
+                            @endif>
                         @csrf
 
                         <div class="form-group">
                             <label for="name">{{ __('Name') }}</label>
 
                             <div>
-                                <input id="name" type="text"
-                                       class="form-control @error('name') is-invalid @enderror" name="name"
+                                <input id="name" name="name" type="text"
+                                       class="form-control @error('name') is-invalid @enderror"
                                        value="{{ old('name', $product->name) }}" required autocomplete="off" autofocus>
 
                                 @error('name')
@@ -30,7 +35,7 @@
                         <div class="form-group">
                             <label for="category">{{ __('Category') }}</label>
                             <div>
-                                <select class="form-control" id="category">
+                                <select class="form-control" id="category" name="category">
                                     @foreach(\App\Models\Category::all() as $category)
                                         <option value="{{ $category->slug }}"
                                                 @if(old('category', $product->category) == $category->slug)
@@ -45,9 +50,9 @@
                             <label for="description">{{ __('Description') }}</label>
 
                             <div>
-                                <textarea id="description" type="text" rows="10"
+                                <textarea id="description" name="description" type="text" rows="10"
                                           class="form-control @error('description') is-invalid @enderror"
-                                          name="description" required>{{ old('description', $product->description) }}</textarea>
+                                          required>{{ old('description', $product->description) }}</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">
@@ -61,8 +66,8 @@
                             <label for="price">{{ __('Price') }}</label>
 
                             <div>
-                                <input id="price" type="number"
-                                       class="form-control @error('price') is-invalid @enderror" name="price"
+                                <input id="price" name="price" type="number"
+                                       class="form-control @error('price') is-invalid @enderror"
                                        value="{{ old('price', $product->price) }}" required autocomplete="off">
 
                                 @error('price')
@@ -77,8 +82,8 @@
                             <label for="stock">{{ __('Stock') }}</label>
 
                             <div>
-                                <input id="stock" type="number"
-                                       class="form-control @error('stock') is-invalid @enderror" name="stock"
+                                <input id="stock" name="stock" type="number"
+                                       class="form-control @error('stock') is-invalid @enderror"
                                        value="{{ old('stock', $product->stock) }}" required autocomplete="off">
 
                                 @error('stock')
@@ -93,9 +98,9 @@
                             <label for="image">{{ __('Image') }}</label>
 
                             <div>
-                                <input id="image" type="file"
-                                       class="form-control @error('image') is-invalid @enderror" name="image"
-                                       value="{{ old('image', $product->image) }}" required>
+                                <input id="image" name="image" type="file"
+                                       class="form-control @error('image') is-invalid @enderror"
+                                       value="{{ old('image', $product->image) }}" @if(!$editMode) required @endif>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -105,10 +110,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
-                            </div>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">{{ __('Save Changes') }}</button>
                         </div>
                     </form>
                 </div>

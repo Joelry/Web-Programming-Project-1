@@ -101,7 +101,7 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right" for="Country">Country</label>
                             <div class="col-md-6">
-                                <select class="form-control" id="country">
+                                <select class="form-control" id="country" name="country">
                                     <option>Indonesia</option>
                                     <option>United States</option>
                                     <option>United Kingdom</option>
