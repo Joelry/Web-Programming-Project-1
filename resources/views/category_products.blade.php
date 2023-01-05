@@ -2,20 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" label="search">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
-        </div>
-    </div>
-</div>
-
-<div class="container">
     <h2>{{ $category->name }}</h2>
-    <div class="card-deck mt-3 ml-1 mr-1 mb-3" style="overflow-x: auto">
-        @foreach($category->products()->get() as $product)
+    <div class="product-deck-v">
+        @foreach($products as $product)
             @include('product_entry')
         @endforeach
+    </div>
+    <div class="d-flex justify-content-end">
+        {{ $products->links() }}
     </div>
 </div>
 @endsection

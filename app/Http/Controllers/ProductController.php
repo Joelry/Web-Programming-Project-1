@@ -144,4 +144,12 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->q;
+        $products = Product::where('name', 'like', '%' . $query . '%')->paginate(10)->appends(['q' => $query]);
+
+        return view('product_search', compact('query', 'products'));
+    }
 }

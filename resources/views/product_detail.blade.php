@@ -9,7 +9,7 @@
         <div class="col">
             <h3>{{ $product->name }}</h3>
             <div class="product-price">Rp {{ number_format($product->price) }}</div>
-            <div class="product-description">{{ $product->description }}</div>
+            <div class="product-description mt-2">{!! $product->description !!}</div>
         </div>
         <div class="col-lg-3">
             <div class="d-flex flex-column">

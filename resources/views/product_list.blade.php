@@ -8,14 +8,14 @@
             <a href="{{ route('products.new') }}" class="btn btn-primary"><span class="fa fa-plus"></span> Add Product</a>
         </div>
     </div>
-    <div>
+    <form action="" method="GET">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" label="search">
+            <input type="text" class="form-control" label="search" name="q" value="{{ request('q') }}">
             <div class="input-group-append">
-                <button class="btn btn-secondary" type="button">Search</button>
+                <button class="btn btn-secondary" type="submit">Search</button>
             </div>
         </div>
-    </div>
+    </form>
     @if(Session::has('message'))
         <div class="alert alert-dismissible alert-success">
             {{ Session::get('message') }}
@@ -25,7 +25,15 @@
         </div>
     @endif
     <div class="col">
-        @foreach(\App\Models\Product::all() as $product)
+        @php
+            $query = request('q');
+            if ($query) {
+                $products = \App\Models\Product::where('name', 'like', '%' . request('q') . '%')->paginate(10)->appends(['q' => $query]);
+            } else {
+                $products = \App\Models\Product::paginate(10);
+            }
+        @endphp
+        @foreach($products as $product)
             <div class="card mb-2 d-flex flex-row">
                 <img class="card-img-left" src="{{ url('storage/' . $product->image) }}" alt="{{$product->name}}"
                      style="width: 150px; height: 150px">
@@ -46,6 +54,9 @@
                 </div>
             </div>
         @endforeach
+        <div class="d-flex justify-content-end">
+            {{ $products->links() }}
+        </div>
     </div>
 </div>
 @endsection

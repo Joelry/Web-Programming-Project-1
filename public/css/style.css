@@ -2,6 +2,15 @@
     background-color: black;
 }
 
+.product {
+    flex: 0 0 200px;
+}
+
+.product img {
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
 .product a {
     color: inherit;
 }
@@ -18,4 +27,19 @@
 .product-subtotal {
     font-weight: bold;
     font-size: 18px;
+}
+
+.product-deck {
+    padding: 16px;
+    gap: 16px;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.product-deck-v {
+    padding: 16px;
+    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
 }

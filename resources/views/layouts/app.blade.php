@@ -68,10 +68,12 @@
                                 </li>
                             @endif
                         @else
-                            <!-- Cart -->
-                            <a class="btn" href="{{ route('cart') }}">
-                                <span class="fa fa-shopping-cart"></span> {{ number_format(Auth::user()->cartEntries()->count()) }}
-                            </a>
+                            @if(Auth::user()->role == 'member')
+                                <!-- Cart -->
+                                <a class="btn" href="{{ route('cart') }}">
+                                    <span class="fa fa-shopping-cart"></span> {{ number_format(Auth::user()->cartEntries()->count()) }}
+                                </a>
+                            @endif
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

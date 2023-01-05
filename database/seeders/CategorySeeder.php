@@ -17,6 +17,8 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             self::makeCategory('beauty', 'Beauty'),
             self::makeCategory('camera', 'Camera'),
+            self::makeCategory('motherboard', 'Motherboard'),
+            self::makeCategory('processor', 'Processor'),
         ]);
     }
 

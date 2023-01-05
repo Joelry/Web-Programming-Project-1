@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function products(Request $request)
     {
         $category = Category::find($request->id);
-        $products = $category->products()->get();
+        $products = $category->products_paginated;
 
         return view('category_products', compact('category', 'products'));
     }
