@@ -40,8 +40,10 @@
                     </div>
                 </div>
 
-                <!-- Manage Products -->
-                <a class="btn" href="{{ route('products.manage') }}">{{ __('Manage Products') }}</a>
+                @if(Auth::check() && Auth::user()->role == 'admin')
+                    <!-- Manage Products -->
+                    <a class="btn" href="{{ route('products.manage') }}">{{ __('Manage Products') }}</a>
+                @endif
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -66,16 +68,31 @@
                                 </li>
                             @endif
                         @else
+                            <!-- Cart -->
+                            <a class="btn" href="{{ route('cart') }}">
+                                <span class="fa fa-shopping-cart"></span> {{ number_format(Auth::user()->cartEntries()->count()) }}
+                            </a>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    @if(Auth::check() && Auth::user()->role == 'member')
+                                        <a class="dropdown-item" href="{{ route('transactions') }}">
+                                            <span class="fa fa-shopping-cart"></span> {{ __('Transactions') }}
+                                        </a>
+                                    @endif
+
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        <span class="fa fa-user"></span> Profile
+                                    </a>
+
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <span class="fa fa-sign-out"></span> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

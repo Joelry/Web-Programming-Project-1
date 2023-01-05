@@ -17,4 +17,16 @@ class Product extends Model
         'stock',
         'image',
     ];
+
+    public function categoryData()
+    {
+        return $this->belongsTo(Category::class, 'category', 'slug');
+    }
+
+    public function getMaxPurchaseQuantity(User $user)
+    {
+        $entry = $user->cartEntries()->where('product_id', $this->id)->first();
+        $cartQuantity = $entry ? $entry->quantity : 0;
+        return $this->stock - $cartQuantity;
+    }
 }

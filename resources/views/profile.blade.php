@@ -10,25 +10,25 @@
                     <form>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" id="name">
+                            <input type="text" name="name" class="form-control" id="name" value="{{ $user->name }}" readonly>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="email" class="form-control" id="email">
+                            <input type="text" name="email" class="form-control" id="email" value="{{ $user->email }}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="Gender">Gender</label>
-                            <input type="text" name="Gender" class="form-control" id="Gender">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="date">Date Of Birth</label>
-                            <input type="text" name="date" class="form-control" id="date">
+                            <label for="gender">Gender</label>
+                            <input type="text" name="gender" class="form-control" id="gender" value="{{ $user->gender }}" readonly>
                         </div>
 
                         <div class="form-group">
-                            <label for="updateName">Country</label>
-                            <input type="text" name="updateName" class="form-control" id="updateName">
+                            <label for="birthdate">Date of Birth</label>
+                            <input type="text" name="birthdate" class="form-control" id="birthdate" value="{{ $user->birthdate }}" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" name="country" class="form-control" id="country" value="{{ $user->country }}" readonly>
                         </div>
                     </form>
                 </div>

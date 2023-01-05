@@ -9,3 +9,13 @@
 .product a:hover {
     text-decoration: none;
 }
+
+.product-price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.product-subtotal {
+    font-weight: bold;
+    font-size: 18px;
+}

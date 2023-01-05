@@ -18,9 +18,8 @@ class ProductController extends Controller
     public function index()
     {
         $product = null;
-        $message = null;
 
-        return view('product_list', compact('product', 'message'));
+        return view('product_list', compact('product'));
     }
 
     /**
@@ -58,9 +57,9 @@ class ProductController extends Controller
             'image' => $image->getClientOriginalName(),
         ]);
 
-        $message = __('Successfully created :name.', ['name' => $product->name]);
+        Session::flash('message', __('Successfully created :name.', ['name' => $product->name]));
 
-        return view('product_list', compact('product', 'message'));
+        return view('product_list', compact('product'));
     }
 
     /**
@@ -116,9 +115,9 @@ class ProductController extends Controller
 
         $product->save();
 
-        $message = __('Successfully updated :name.', ['name' => $product->name]);
+        Session::flash('message', __('Successfully updated :name.', ['name' => $product->name]));
 
-        return view('product_list', compact('product', 'message'));
+        return view('product_list', compact('product'));
     }
 
     /**
@@ -130,9 +129,9 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $product = Product::where('id', $request->id)->delete();
-        $message = __('Successfully deleted :name.', ['name' => $product->name]);
+        Session::flash('message', __('Successfully deleted :name.', ['name' => $product->name]));
 
-        return view('product_list', compact('product', 'message'));
+        return view('product_list', compact('product'));
     }
 
     private static function validate_product(Request $request)

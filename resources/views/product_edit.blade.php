@@ -4,6 +4,9 @@
 <div class="w-50 container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <button class="btn btn-secondary mb-2" onclick="history.back()">
+                <span class="fa fa-arrow-left"></span> Back
+            </button>
             <div class="card">
                 <div class="card-header text-center">
                     @if($editMode)

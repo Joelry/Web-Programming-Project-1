@@ -16,15 +16,15 @@
             </div>
         </div>
     </div>
-    @if(!is_null($message))
+    @if(Session::has('message'))
         <div class="alert alert-dismissible alert-success">
-            {{ $message }}
+            {{ Session::get('message') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     @endif
-    <div class="column">
+    <div class="col">
         @foreach(\App\Models\Product::all() as $product)
             <div class="card mb-2 d-flex flex-row">
                 <img class="card-img-left" src="{{ url('storage/' . $product->image) }}" alt="{{$product->name}}"

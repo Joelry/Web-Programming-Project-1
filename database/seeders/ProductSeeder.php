@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
         $data = [
             [
                 'name' => 'Azarine oil free Brightening',
-                'category' => 'Beauty',
+                'category' => 'beauty',
                 'description' => 'Oil-free moisturizer for morning and night which functions to nourish the skin and reduce acne scars.  This moisturizer can be used by oily and acne prone skin because it is oil and fragrance free.',
                 'stock' => 10,
                 'price' => '35000',
@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Azarine Hydrasoothe Sunscreen Gel',
-                'category' => 'Beauty',
+                'category' => 'beauty',
                 'description' => 'Juicy Lip Balm is a moisturizing tinted balm lipstick with sun protection, Ester Oil, Vit E, and Vit C. ',
                 'stock' => 10,
                 'price' => '42000',
@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Azarine Hydrasoothe Sunscreen Gel',
-                'category' => 'Beauty',
+                'category' => 'beauty',
                 'description' => 'Facial sunscreen in the form of a gel (water base) which is very light, cool and easily absorbed for all skin types including oily skin and acne prone skin.',
                 'stock' => 10,
                 'price' => '25000',
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Azarine Hydrasoothe Sunscreen Mist',
-                'category' => 'Beauty',
+                'category' => 'beauty',
                 'description' => 'Liquid spray sunscreen that is practically used to moisturize and protect the skin from the bad effects of sunlight.',
                 'stock' => 10,
                 'price' => '20000',
@@ -50,7 +50,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'O.TWO.O Liquid Blush Swatches',
-                'category' => 'Beauty',
+                'category' => 'beauty',
                 'description' => 'The O TWO O Liquid Blush is available in four different shades. Shade 01 Morning looks like a medium pink with a golden shimmer shift, 03 Orgasm is a bright watermelon pink and 04 Micro is a deep berry shade.',
                 'stock' => 10,
                 'price' => '42000',
@@ -58,7 +58,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Canon EOS 6D Mark 2 DSLR Cameras',
-                'category' => 'Camera',
+                'category' => 'camera',
                 'description' => 'The Canon EOS 6D Mark II is equipped with a 26.2 Megapixel CMOS sensor and DIGIC 7 Image Processor to deliver outstanding shooting performance across all ISO ranges.',
                 'stock' => 10,
                 'price' => '25000000',
@@ -66,7 +66,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'DRONE KAMERA TXD 8S 1080P',
-                'category' => 'Camera',
+                'category' => 'camera',
                 'description' => 'Drone already on camera, Wifi FPV, can stream,Distance 120m, (specs from the factory),Ready black',
                 'stock' => 10,
                 'price' => '320000',
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Mini Tripod Vlog Meeting',
-                'category' => 'Camera',
+                'category' => 'camera',
                 'description' => 'Mini Tripod This is a tripod specifically for video conferencing needs such as Zoom Meetings or for Instagram and Youtube vlogs.  You can position the smartphone hinge to be portrait or landscape',
                 'stock' => 10,
                 'price' => '35000',
@@ -82,7 +82,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Tomsis Bluetooth Remote',
-                'category' => 'Camera',
+                'category' => 'camera',
                 'description' => 'Capturing the moment when gathering with friends and family must be very fun.',
                 'stock' => 10,
                 'price' => '7700',
@@ -90,7 +90,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'KNF Concept 4-in-1 Cleaning Kit',
-                'category' => 'Camera',
+                'category' => 'camera',
                 'description' => 'K&F Concept Cleaning Kit 4 in 1: Cleaning Pen, Blower, Cleaning Cloth,Cleaning fluid.',
                 'stock' => 10,
                 'price' => '140000',

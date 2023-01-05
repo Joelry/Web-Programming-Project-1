@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +27,17 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/profile',function () {
-    return view('profile');
-});
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/delete/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+
+Route::get('/transactions', [TransactionsController::class, 'transactions'])->name('transactions');
+
+Route::get('/profile', function () {
+    $user = Auth::user();
+    return view('profile', compact('user'));
+})->name('profile');
 
 Route::get('/category/{id}', [CategoryController::class, 'products'])->name('category.products');
 
